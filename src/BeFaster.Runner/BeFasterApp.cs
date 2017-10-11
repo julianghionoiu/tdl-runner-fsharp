@@ -1,6 +1,4 @@
-﻿using BeFaster.Runner;
-
-namespace BeFaster
+﻿namespace BeFaster.Runner
 {
     internal class BeFasterApp
     {

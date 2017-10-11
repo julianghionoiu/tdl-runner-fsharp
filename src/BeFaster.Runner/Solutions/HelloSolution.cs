@@ -1,10 +1,10 @@
 ﻿using BeFaster.Runner.Exceptions;
 
-namespace BeFaster.Solutions
+namespace BeFaster.Runner.Solutions
 {
-    internal static class FizzBuzzSolution
+    internal static class HelloSolution
     {
-        public static string FizzBuzz(int number)
+        public static string Hello(string friendName)
         {
             throw new SolutionNotImplementedException();
         }

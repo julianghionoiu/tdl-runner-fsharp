@@ -1,6 +1,6 @@
 ﻿using BeFaster.Runner.Exceptions;
 
-namespace BeFaster.Solutions
+namespace BeFaster.Runner.Solutions
 {
     internal static class CheckoutSolution
     {

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using BeFaster.Runner.Extensions;
+using BeFaster.Runner.Solutions;
 using BeFaster.Runner.Utils;
-using BeFaster.Solutions;
 using TDL.Client;
 using TDL.Client.Actions;
 using TDL.Client.Audit;
