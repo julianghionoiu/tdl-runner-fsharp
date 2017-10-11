@@ -1,6 +1,6 @@
-# tdl-runner-csharp
+# tdl-runner-fsharp
 
-The C# (.Net) challenge runner
+The F# (.Net) challenge runner
 
 ## 1. Requirements
 
