@@ -59,7 +59,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BeFasterApp.cs" />
     <Compile Include="CredentialsConfigFile.cs" />
     <Compile Include="Exceptions\ConfigNotFoundException.cs" />
     <Compile Include="Exceptions\RecordingSystemNotReachable.cs" />
