@@ -55,10 +55,10 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Solutions\CheckoutSolution.fs" />
-    <Compile Include="Solutions\FizzBuzzSolution.fs" />
-    <Compile Include="Solutions\HelloSolution.fs" />
-    <Compile Include="Solutions\SumSolution.fs" />
+    <Compile Include="Solutions\Checkout.fs" />
+    <Compile Include="Solutions\FizzBuzz.fs" />
+    <Compile Include="Solutions\Hello.fs" />
+    <Compile Include="Solutions\Sum.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />

@@ -2,6 +2,6 @@
 
 open System
 
-type HelloSolution private() =
-    static member Hello(friendName : string) = 
+type Hello private() =
+    static member hello(friendName: string) = 
         raise (NotImplementedException())

@@ -44,10 +44,11 @@ let main argv =
         .WithServerHostname("run.befaster.io")
         .WithActionIfNoArgs(RunnerAction.TestConnectivity)
         .WithSolutions(fun s ->
-            s.On("checkout").Call(fun p -> CheckoutSolution.Checkout(p.[0]))
-            s.On("hello").Call(fun p -> HelloSolution.Hello(p.[0]))
-            s.On("fizz_buzz").Call(fun p -> FizzBuzzSolution.FizzBuzz(p.[0].AsInt()))
-            s.On("sum").Call(fun p -> SumSolution.Sum(p.[0].AsInt(), p.[1].AsInt())))
+            s.On("checkout").Call(fun p -> Checkout.checkout(p.[0]) :> obj)
+            s.On("fizz_buzz").Call(fun p -> FizzBuzz.fizzBuzz(p.[0].AsInt()) :> obj)
+            s.On("hello").Call(fun p -> Hello.hello(p.[0]) :> obj)
+            s.On("sum").Call(fun p -> Sum.sum(p.[0].AsInt(), p.[1].AsInt()) :> obj)
+        )
         .Create()
         .Start(argv)
     0 // return an integer exit code

@@ -2,6 +2,6 @@
 
 open System
 
-type FizzBuzzSolution private() =
-    static member FizzBuzz(number : int) = 
+type FizzBuzz private() =
+    static member fizzBuzz(number: int) = 
         raise (NotImplementedException())

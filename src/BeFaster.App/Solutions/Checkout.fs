@@ -2,6 +2,6 @@
 
 open System
 
-type CheckoutSolution private() =
-    static member Checkout(skus: string) = 
+type Checkout private() =
+    static member checkout(skus: string) = 
         raise (NotImplementedException())

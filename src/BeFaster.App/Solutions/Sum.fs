@@ -2,6 +2,6 @@
 
 open System
 
-type SumSolution private() =
-    static member Sum(x: int, y: int) = 
+type Sum private() =
+    static member sum(x: int, y: int) = 
         raise (NotImplementedException())
