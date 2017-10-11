@@ -1,6 +1,6 @@
 ﻿namespace BeFaster.Runner
 {
-    internal partial class ClientRunner
+    public partial class ClientRunner
     {
         public class Builder
         {

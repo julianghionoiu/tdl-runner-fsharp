@@ -77,6 +77,13 @@
       <HintPath>..\..\packages\System.ValueTuple.4.3.1\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BeFaster.Runner\BeFaster.Runner.csproj">
+      <Name>BeFaster.Runner</Name>
+      <Project>{a791c7cb-2abf-40a0-8d3b-93aa58c97ae5}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

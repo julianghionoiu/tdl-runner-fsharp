@@ -10,7 +10,7 @@ using TDL.Client.Audit;
 
 namespace BeFaster.Runner
 {
-    internal partial class ClientRunner
+    public partial class ClientRunner
     {
         private readonly string username;
         private readonly string hostname;
