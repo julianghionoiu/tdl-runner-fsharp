@@ -1,7 +1,4 @@
-﻿// Learn more about F# at http://fsharp.org
-// See the 'F# Tutorial' project for more help.
-
-open BeFaster.Runner
+﻿open BeFaster.Runner
 open BeFaster.Runner.Extensions
 open BeFaster.App.Solutions
 
@@ -9,9 +6,9 @@ open BeFaster.App.Solutions
 let main argv = 
     ClientRunner
         .Build()
-        //.ForUsername(CredentialsConfigFile.Get("tdl_username"))
-        //.WithServerHostname("run.befaster.io")
-        //.WithActionIfNoArgs(RunnerAction.TestConnectivity)
+        .ForUsername(CredentialsConfigFile.Get("tdl_username"))
+        .WithServerHostname("run.befaster.io")
+        .WithActionIfNoArgs(RunnerAction.TestConnectivity)
         .WithSolutions(fun s ->
             s.On("checkout").Call(fun p -> CheckoutSolution.Checkout(p.[0]))
             s.On("hello").Call(fun p -> HelloSolution.Hello(p.[0]))
