@@ -8,26 +8,41 @@ using TDL.Client.Audit;
 
 namespace BeFaster.Runner
 {
-    public partial class ClientRunner
+    public class ClientRunner
     {
         private readonly string username;
-        private readonly string hostname;
-        private readonly RunnerAction defaultRunnerAction;
         private readonly Dictionary<string, Func<string[], object>> solutions;
+        private string hostname;
+        private RunnerAction defaultRunnerAction;
 
-        private ClientRunner(
-            string username,
-            string hostname,
-            RunnerAction defaultRunnerAction,
-            Dictionary<string, Func<string[], object>> solutions)
+        public static ClientRunner ForUsername(string username)
         {
-            this.username = username;
-            this.hostname = hostname;
-            this.defaultRunnerAction = defaultRunnerAction;
-            this.solutions = solutions;
+            return new ClientRunner(username);
         }
 
-        public static Builder Build() => new Builder();
+        private ClientRunner(string username)
+        {
+            this.username = username;
+            solutions = new Dictionary<string, Func<string[], object>>();
+        }
+
+        public ClientRunner WithServerHostname(string hostname)
+        {
+            this.hostname = hostname;
+            return this;
+        }
+
+        public ClientRunner WithActionIfNoArgs(RunnerAction defaultRunnerAction)
+        {
+            this.defaultRunnerAction = defaultRunnerAction;
+            return this;
+        }
+
+        public ClientRunner WithSolutionFor(string methodName, Func<string[], object> solution)
+        {
+            solutions.Add(methodName, solution);
+            return this;
+        }
 
         public void Start(string[] args)
         {

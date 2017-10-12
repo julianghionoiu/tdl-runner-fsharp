@@ -39,16 +39,12 @@ open BeFaster.App.Solutions
 [<EntryPoint>]
 let main argv = 
     ClientRunner
-        .Build()
         .ForUsername(CredentialsConfigFile.Get("tdl_username"))
         .WithServerHostname("run.befaster.io")
         .WithActionIfNoArgs(RunnerAction.TestConnectivity)
-        .WithSolutions(fun s ->
-            s.On("checkout").Call(fun p -> Checkout.checkout(p.[0]) :> obj)
-            s.On("fizz_buzz").Call(fun p -> FizzBuzz.fizzBuzz(p.[0].AsInt()) :> obj)
-            s.On("hello").Call(fun p -> Hello.hello(p.[0]) :> obj)
-            s.On("sum").Call(fun p -> Sum.sum(p.[0].AsInt(), p.[1].AsInt()) :> obj)
-        )
-        .Create()
+        .WithSolutionFor("sum", fun p -> Sum.sum(p.[0].AsInt(), p.[1].AsInt()) :> obj)
+        .WithSolutionFor("hello", fun p -> Hello.hello(p.[0]) :> obj)
+        .WithSolutionFor("fizz_buzz", fun p -> FizzBuzz.fizzBuzz(p.[0].AsInt()) :> obj)
+        .WithSolutionFor("checkout", fun p -> Checkout.checkout(p.[0]) :> obj)
         .Start(argv)
     0 // return an integer exit code

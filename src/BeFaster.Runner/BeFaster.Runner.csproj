@@ -59,18 +59,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientRunner.SolutionsBuilder.cs">
-      <DependentUpon>ClientRunner.cs</DependentUpon>
-    </Compile>
     <Compile Include="CredentialsConfigFile.cs" />
     <Compile Include="Exceptions\ConfigNotFoundException.cs" />
     <Compile Include="Exceptions\RecordingSystemNotReachable.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Utils\PathHelper.cs" />
     <Compile Include="RecordingSystem.cs" />
-    <Compile Include="ClientRunner.Builder.cs">
-      <DependentUpon>ClientRunner.cs</DependentUpon>
-    </Compile>
     <Compile Include="ClientRunner.cs" />
     <Compile Include="Utils\Optional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
