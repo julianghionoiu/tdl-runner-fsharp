@@ -40,7 +40,7 @@ open BeFaster.App.Solutions
 let main argv = 
     ClientRunner
         .ForUsername(CredentialsConfigFile.Get("tdl_username"))
-        .WithServerHostname("run.befaster.io")
+        .WithServerHostname(CredentialsConfigFile.Get("tdl_hostname"))
         .WithActionIfNoArgs(RunnerAction.TestConnectivity)
         .WithSolutionFor("sum", fun p -> Sum.sum(p.[0].AsInt(), p.[1].AsInt()) :> obj)
         .WithSolutionFor("hello", fun p -> Hello.hello(p.[0]) :> obj)
