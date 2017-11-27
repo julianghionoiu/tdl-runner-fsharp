@@ -74,6 +74,7 @@
     <Compile Include="Exceptions\SolutionNotImplementedException.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="ChallengeServerClient.cs" />
+    <Compile Include="WindowsConsoleSupport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
