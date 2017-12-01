@@ -58,7 +58,7 @@
     <Compile Include="Solutions\FizzBuzz.fs" />
     <Compile Include="Solutions\Hello.fs" />
     <Compile Include="Solutions\Sum.fs" />
-    <Compile Include="ConnectToServer.fs" />
+    <Compile Include="SendCommandToServer.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
   </ItemGroup>
