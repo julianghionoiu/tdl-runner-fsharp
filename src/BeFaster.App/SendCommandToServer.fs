@@ -1,6 +1,10 @@
-﻿open BeFaster.Runner
-open BeFaster.Runner.Extensions
+﻿open TDL.Client
+open TDL.Client.Runner
 open BeFaster.App.Solutions
+open BeFaster.Runner
+open BeFaster.Runner.Extensions
+open BeFaster.Runner.Utils
+open System
 
 /// <summary>
 /// ~~~~~~~~~~ Running the system: ~~~~~~~~~~~~~
@@ -44,13 +48,21 @@ open BeFaster.App.Solutions
 /// </summary>
 [<EntryPoint>]
 let main argv = 
-    ClientRunner
-        .ForUsername(CredentialsConfigFile.Get("tdl_username"))
-        .WithServerHostname(CredentialsConfigFile.Get("tdl_hostname"))
-        .WithActionIfNoArgs(RunnerAction.TestConnectivity)
-        .WithSolutionFor("sum", fun p -> Sum.sum(p.[0].AsInt(), p.[1].AsInt()) :> obj)
-        .WithSolutionFor("hello", fun p -> Hello.hello(p.[0]) :> obj)
-        .WithSolutionFor("fizz_buzz", fun p -> FizzBuzz.fizzBuzz(p.[0].AsInt()) :> obj)
-        .WithSolutionFor("checkout", fun p -> Checkout.checkout(p.[0]) :> obj)
-        .Start(argv)
+    let runner =
+        QueueBasedImplementationRunner.Builder()
+            .SetConfig(Utils.Utils.GetRunnerConfig())
+            .WithSolutionFor("sum", fun p -> Sum.sum(p.[0].AsInt(), p.[1].AsInt()) :> obj)
+            .WithSolutionFor("hello", fun p -> Hello.hello(p.[0]) :> obj)
+            .WithSolutionFor("fizz_buzz", fun p -> FizzBuzz.fizzBuzz(p.[0].AsInt()) :> obj)
+            .WithSolutionFor("checkout", fun p -> Checkout.checkout(p.[0]) :> obj)
+            .Create()
+
+    ChallengeSession.ForRunner(runner)
+        .WithConfig(Utils.GetConfig())
+        .WithActionProvider(new UserInputAction(argv))
+        .Start()
+
+    printf "Press any key to continue . . . "
+    Console.ReadKey() |> ignore
+    
     0 // return an integer exit code
