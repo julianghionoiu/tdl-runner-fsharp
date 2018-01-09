@@ -4,6 +4,7 @@ open BeFaster.App.Solutions
 open BeFaster.Runner
 open BeFaster.Runner.Extensions
 open BeFaster.Runner.Utils
+open System
 
 /// <summary>
 /// ~~~~~~~~~~ Running the system: ~~~~~~~~~~~~~
@@ -60,5 +61,8 @@ let main argv =
         .WithConfig(Utils.GetConfig())
         .WithActionProvider(new UserInputAction(argv))
         .Start()
+
+    printf "Press any key to continue . . . "
+    Console.ReadKey() |> ignore
     
     0 // return an integer exit code
