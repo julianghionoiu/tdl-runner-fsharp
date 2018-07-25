@@ -1,6 +1,9 @@
 ﻿open TDL.Client
 open TDL.Client.Runner
-open BeFaster.App.Solutions
+open BeFaster.App.Solutions.CHK
+open BeFaster.App.Solutions.FIZ
+open BeFaster.App.Solutions.HLO
+open BeFaster.App.Solutions.SUM
 open BeFaster.Runner
 open BeFaster.Runner.Extensions
 open BeFaster.Runner.Utils
