@@ -32,24 +32,27 @@ mkdir -p ${FSHARP_TEST_COVERAGE_DIR}
 [ -e ${SCRIPT_CURRENT_DIR}/__Instrumented ] && rm -fr ${SCRIPT_CURRENT_DIR}/__Instrumented
 [ -e ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover ] && rm -fr ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover
 
+
 # Instrument the binaries so that coverage can be collected
+FULL_PATH_TO_ALTCOVER="$(cd ${SCRIPT_CURRENT_DIR} && find . -path *altcover* | head -n 1 || true)"/tools/net45/AltCover.exe
+
 (
     cd ${SCRIPT_CURRENT_DIR} && \
-    mono ${SCRIPT_CURRENT_DIR}/packages/altcover.3.5.569/tools/net45/AltCover.exe \
-      --opencover --linecover                                                     \
-      --inputDirectory ${SCRIPT_CURRENT_DIR}/src/BeFaster.App.Tests/bin/Debug     \
-      --assemblyFilter=Adapter                                                    \
-      --assemblyFilter=Mono                                                       \
-      --assemblyFilter=\.Recorder                                                 \
-      --assemblyFilter=Sample                                                     \
-      --assemblyFilter=nunit                                                      \
-      --assemblyFilter=Tests                                                      \
-      --assemblyExcludeFilter=.+\.Tests                                           \
-      --assemblyExcludeFilter=AltCover.+                                          \
-      --assemblyExcludeFilter=Mono\.DllMap.+                                      \
-      --typeFilter=System.                                                        \
-      --outputDirectory=${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover              \
-      --xmlReport=${FSHARP_INSTRUMENTED_COVERAGE_REPORT} || true
+    mono ${SCRIPT_CURRENT_DIR}/${FULL_PATH_TO_ALTCOVER}                       \
+      --opencover --linecover                                                 \
+      --inputDirectory ${SCRIPT_CURRENT_DIR}/src/BeFaster.App.Tests/bin/Debug \
+      --assemblyFilter=Adapter                                                \
+      --assemblyFilter=Mono                                                   \
+      --assemblyFilter=\.Recorder                                             \
+      --assemblyFilter=Sample                                                 \
+      --assemblyFilter=nunit                                                  \
+      --assemblyFilter=Tests                                                  \
+      --assemblyExcludeFilter=.+\.Tests                                       \
+      --assemblyExcludeFilter=AltCover.+                                      \
+      --assemblyExcludeFilter=Mono\.DllMap.+                                  \
+      --typeFilter=System.                                                    \
+      --outputDirectory=${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover          \
+      --xmlReport=${FSHARP_INSTRUMENTED_COVERAGE_REPORT}
 )
 
 # Run the tests against the instrumented binaries
@@ -57,12 +60,12 @@ FULL_PATH_TO_NUNIT_CONSOLE="$(cd ${SCRIPT_CURRENT_DIR} && find . -path *nunit*co
 
 (
   cd ${SCRIPT_CURRENT_DIR} && \
-    mono ${SCRIPT_CURRENT_DIR}/packages/altcover.3.5.569/tools/net45/AltCover.exe Runner                \
-        --executable ${SCRIPT_CURRENT_DIR}/${FULL_PATH_TO_NUNIT_CONSOLE}                                \
-        --recorderDirectory ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover/                               \
-        -w ${SCRIPT_CURRENT_DIR}                                                                        \
-        -- --noheader --labels=All  --work=${SCRIPT_CURRENT_DIR}                                        \
-        --result=${FSHARP_TEST_RUN_REPORT}                                                              \
+    mono ${SCRIPT_CURRENT_DIR}/${FULL_PATH_TO_ALTCOVER} Runner                    \
+        --executable ${SCRIPT_CURRENT_DIR}/${FULL_PATH_TO_NUNIT_CONSOLE}          \
+        --recorderDirectory ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover/         \
+        -w ${SCRIPT_CURRENT_DIR}                                                  \
+        -- --noheader --labels=All  --work=${SCRIPT_CURRENT_DIR}                  \
+        --result=${FSHARP_TEST_RUN_REPORT}                                        \
         ${SCRIPT_CURRENT_DIR}/__UnitTestWithAltCover/BeFaster.App.Tests.dll || true
 )
 
