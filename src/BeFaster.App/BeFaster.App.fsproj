@@ -60,6 +60,8 @@
     <Compile Include="Solutions\SUM\Sum.fs" />
     <Compile Include="Solutions\TST\One.fs" />
     <Compile Include="Solutions\TST\Two.fs" />
+    <Compile Include="Solutions\ARRS\ArraySum.fs" />
+    <Compile Include="Solutions\IRNG\IntRange.fs" />
     <Compile Include="SendCommandToServer.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
@@ -77,9 +79,6 @@
       <AssemblyName>FSharp.Core.dll</AssemblyName>
       <HintPath>..\..\packages\FSharp.Core.4.5.1\lib\net45\FSharp.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
     </Reference>
@@ -89,14 +88,17 @@
     <Reference Include="System.ValueTuple">
       <HintPath>..\..\packages\System.ValueTuple.4.3.1\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="TDL.Client">
-      <HintPath>..\..\packages\TDL.Client.0.25.1\lib\net45\TDL.Client.dll</HintPath>
+      <HintPath>..\..\packages\TDL.Client.0.26.2\lib\net45\TDL.Client.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BeFaster.Runner\BeFaster.Runner.csproj">
       <Name>BeFaster.Runner</Name>
-      <Project>{a791c7cb-2abf-40a0-8d3b-93aa58c97ae5}</Project>
+      <Project>{41D40296-2DAB-423A-84B3-13E656C58B5A}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
@@ -107,4 +109,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Solutions\ARRS\" />
+    <Folder Include="Solutions\IRNG\" />
+  </ItemGroup>
 </Project>

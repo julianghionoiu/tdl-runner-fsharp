@@ -4,9 +4,12 @@ open BeFaster.App.Solutions.CHK
 open BeFaster.App.Solutions.FIZ
 open BeFaster.App.Solutions.HLO
 open BeFaster.App.Solutions.SUM
+open BeFaster.App.Solutions.ARRS
+open BeFaster.App.Solutions.IRNG
 open BeFaster.Runner
 open BeFaster.Runner.Extensions
 open BeFaster.Runner.Utils
+open Newtonsoft.Json.Linq;
 open System
 
 /// <summary>
@@ -56,10 +59,12 @@ let main argv =
     let runner =
         QueueBasedImplementationRunner.Builder()
             .SetConfig(Utils.Utils.GetRunnerConfig())
-            .WithSolutionFor("sum", fun p -> Sum.sum(p.[0].AsInt(), p.[1].AsInt()) :> obj)
-            .WithSolutionFor("hello", fun p -> Hello.hello(p.[0]) :> obj)
-            .WithSolutionFor("fizz_buzz", fun p -> FizzBuzz.fizzBuzz(p.[0].AsInt()) :> obj)
-            .WithSolutionFor("checkout", fun p -> Checkout.checkout(p.[0]) :> obj)
+            .WithSolutionFor("sum", fun p -> Sum.sum((int)p.[0], (int)p.[1]) :> obj)
+            .WithSolutionFor("hello", fun p -> Hello.hello((string)p.[0]) :> obj)
+            .WithSolutionFor("array_sum", fun p -> ArraySum.compute(p.[0].ToObject<List<int>>()) :> obj)
+            .WithSolutionFor("int_range", fun p -> IntRange.generate((int)p.[0], (int)p.[1]) :> obj)
+            .WithSolutionFor("fizz_buzz", fun p -> FizzBuzz.fizzBuzz((int)p.[0]) :> obj)
+            .WithSolutionFor("checkout", fun p -> Checkout.checkout((string)p.[0]) :> obj)
             .Create()
 
     ChallengeSession.ForRunner(runner)
