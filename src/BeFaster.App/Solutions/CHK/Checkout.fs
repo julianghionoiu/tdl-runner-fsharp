@@ -3,4 +3,4 @@
 open System
 
 module Checkout =
-    let checkout(skus: string) = raise (NotImplementedException())
+    let checkout(skus: string): int = raise (NotImplementedException())

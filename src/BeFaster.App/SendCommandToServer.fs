@@ -59,12 +59,12 @@ let main argv =
     let runner =
         QueueBasedImplementationRunner.Builder()
             .SetConfig(Utils.Utils.GetRunnerConfig())
-            .WithSolutionFor("sum", fun p -> Sum.sum((int)p.[0], (int)p.[1]) :> obj)
-            .WithSolutionFor("hello", fun p -> Hello.hello((string)p.[0]) :> obj)
+            .WithSolutionFor("sum", fun p -> Sum.sum(p.[0].ToObject<int>(), p.[1].ToObject<int>()) :> obj)
+            .WithSolutionFor("hello", fun p -> Hello.hello(p.[0].ToObject<string>()) :> obj)
             .WithSolutionFor("array_sum", fun p -> ArraySum.compute(p.[0].ToObject<List<int>>()) :> obj)
-            .WithSolutionFor("int_range", fun p -> IntRange.generate((int)p.[0], (int)p.[1]) :> obj)
-            .WithSolutionFor("fizz_buzz", fun p -> FizzBuzz.fizzBuzz((int)p.[0]) :> obj)
-            .WithSolutionFor("checkout", fun p -> Checkout.checkout((string)p.[0]) :> obj)
+            .WithSolutionFor("int_range", fun p -> IntRange.generate(p.[0].ToObject<int>(), p.[1].ToObject<int>()) :> obj)
+            .WithSolutionFor("fizz_buzz", fun p -> FizzBuzz.fizzBuzz(p.[0].ToObject<int>()) :> obj)
+            .WithSolutionFor("checkout", fun p -> Checkout.checkout(p.[0].ToObject<string>()) :> obj)
             .Create()
 
     ChallengeSession.ForRunner(runner)

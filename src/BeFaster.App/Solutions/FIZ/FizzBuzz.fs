@@ -3,4 +3,4 @@
 open System
 
 module FizzBuzz =
-    let fizzBuzz(number: int) = raise (NotImplementedException())
+    let fizzBuzz(number: int): string = raise (NotImplementedException())
