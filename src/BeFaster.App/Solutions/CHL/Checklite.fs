@@ -1,6 +1,6 @@
-﻿namespace BeFaster.App.Solutions.CHK
+﻿namespace BeFaster.App.Solutions.CHL
 
 open System
 
-module Checkout =
+module Checklite =
     let computePrice(skus: string): int = raise (NotImplementedException())

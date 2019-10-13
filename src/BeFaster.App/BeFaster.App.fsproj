@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Solutions\CHK\Checkout.fs" />
+    <Compile Include="Solutions\CHL\Checklite.fs" />
     <Compile Include="Solutions\FIZ\FizzBuzz.fs" />
     <Compile Include="Solutions\HLO\Hello.fs" />
     <Compile Include="Solutions\SUM\Sum.fs" />
@@ -112,5 +113,6 @@
   <ItemGroup>
     <Folder Include="Solutions\ARRS\" />
     <Folder Include="Solutions\IRNG\" />
+    <Folder Include="Solutions\CHL\" />
   </ItemGroup>
 </Project>

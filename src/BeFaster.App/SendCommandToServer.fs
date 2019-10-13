@@ -1,6 +1,7 @@
 ﻿open TDL.Client
 open TDL.Client.Runner
 open BeFaster.App.Solutions.CHK
+open BeFaster.App.Solutions.CHL
 open BeFaster.App.Solutions.FIZ
 open BeFaster.App.Solutions.HLO
 open BeFaster.App.Solutions.SUM
@@ -66,7 +67,8 @@ let main argv =
             .WithSolutionFor("array_sum", fun p -> ArraySum.compute(p.[0].ToObject<List<int>>()) :> obj)
             .WithSolutionFor("int_range", fun p -> IntRange.generate(p.[0].ToObject<int>(), p.[1].ToObject<int>()) :> obj)
             .WithSolutionFor("fizz_buzz", fun p -> FizzBuzz.fizzBuzz(p.[0].ToObject<int>()) :> obj)
-            .WithSolutionFor("checkout", fun p -> Checkout.checkout(p.[0].ToObject<string>()) :> obj)
+            .WithSolutionFor("checkout", fun p -> Checkout.computePrice(p.[0].ToObject<string>()) :> obj)
+            .WithSolutionFor("checklite", fun p -> Checklite.computePrice(p.[0].ToObject<string>()) :> obj)
             .Create()
 
     ChallengeSession.ForRunner(runner)
