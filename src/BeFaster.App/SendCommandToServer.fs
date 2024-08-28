@@ -19,7 +19,7 @@ open System
 ///      Configure the "BeFaster.App" solution to Run on External Console then run.
 ///
 ///   From command line:
-///      dotnet run --project src/BeFaster.App
+///      dotnet run --project src\BeFaster.App
 ///
 ///   To run your unit tests locally:
 ///      Run the "BeFaster.App.Tests" project.
@@ -41,7 +41,7 @@ open System
 ///   |  2.  | Start a challenge by typing "start".                                  |
 ///   |  3.  | Read the description from the "challenges" folder.                    |
 ///   |  4.  | Locate the file corresponding to your current challenge in:           |
-///   |      |   .\src\BeFaster.App\Solutions                                        |
+///   |      |   src\BeFaster.App\Solutions                                          |
 ///   |  5.  | Replace the following placeholder exception with your solution:       |
 ///   |      |   raise (NotImplementedException())                                   |
 ///   |  6.  | Deploy to production by typing "deploy".                              |
